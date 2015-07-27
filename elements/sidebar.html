@@ -1,0 +1,179 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
+
+<dom-module id="portfolio-sidebar">
+    <style>
+        :host {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 250px;
+            min-height: 100%;
+            height: 100%;
+            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.5;
+            box-shadow: 4px 0 6px rgba(0, 0, 0, .1);
+            background-color: #fff;
+            z-index: 3;
+        }
+        
+        #pink-ripple {
+            color: rgba(255, 123, 123, 0.86);
+        }
+        
+        #sidebar-main {
+            position: relative;
+            height: 250px;
+            background-color: #FF5252!important;
+            margin-bottom: 10px;
+        }
+        
+        #my-name {
+            color: #FFF!important;
+            font-size: 36px;
+            text-align: right;
+            padding-top: 35%;
+            padding-bottom: 5px;
+            padding-right: 18px;
+            font-weight: 100;
+        }
+        
+        .profession {
+            clear: both;
+            text-align: right;
+            padding-right: 18px;
+            font-size: 13px;
+        }
+        
+        a {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: #9e9e9e!important;
+            font-weight: 900;
+            padding: 12px 0 12px 30px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            -webkit-transition: all 800ms ease;
+            transition: all 800ms ease;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            width: 100%;
+        }
+        
+        a:link {
+            color: #9e9e9e;
+        }
+        
+        a:visited {
+            color: #9e9e9e;
+        }
+        
+        a:hover {
+            color: #9e9e9e;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        a:active {
+            color: #9e9e9e;
+        }
+        
+        .portfolio-text {
+            padding-left: 30px;
+        }
+        /*material logos custom colors*/
+        
+        .material-icons.custom-red {
+            color: #ff3030;
+        }
+        
+        .material-icons.custom-purple {
+            color: #673AB7;
+        }
+        
+        .material-icons.custom-green {
+            color: #26A65B;
+        }
+        
+        .material-icons.custom-blue {
+            color: #536dfe;
+        }
+        
+        .material-icons.custom-yellow {
+            color: #F7CA18;
+        }
+        /* end material logos custom colors*/
+    </style>
+    <template>
+        <div id="sidebar-main">
+            <div id="my-name">Andrés <strong>García<paper-ripple></paper-ripple></strong>
+            </div>
+            <div class="profession">Industrial Engineer</div>
+            <div class="profession">Web Developer</div>
+            <paper-ripple id="pink-ripple"></paper-ripple>
+        </div>
+        <div id="sidebar-menu">
+            <template is="dom-repeat" items="{{content}}">
+                <a class="portfolio-item" href="{{item.ref}}">
+                    <i class$="{{getColor(item.color)}}">{{item.icon}}</i>
+                    <span class="portfolio-text">{{item.text}}</span>
+                    <paper-ripple></paper-ripple>
+                </a>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: "portfolio-sidebar",
+            properties: {
+                content: {
+                    type: "Array",
+                    value: [
+                        {
+                            text: "Profile",
+                            icon: "person",
+                            ref: "#",
+                            color: "custom-red"
+                            },
+                        {
+                            text: "Experience",
+                            icon: "pages",
+                            ref: "#",
+                            color: "custom-purple"
+                            },
+                        {
+                            text: "Projects",
+                            icon: "person",
+                            ref: "#",
+                            color: "custom-green"
+                            },
+                        {
+                            text: "Skills",
+                            icon: "person",
+                            ref: "#",
+                            color: "custom-blue"
+                            },
+                        {
+                            text: "Education",
+                            icon: "person",
+                            ref: "#",
+                            color: "custom-yellow"
+                            }
+                        ]
+
+                }
+            },
+            getColor: function (color) {
+                return "material-icons md-24 " + color;
+            }
+        });
+    </script>
+</dom-module>

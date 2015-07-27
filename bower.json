@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-elements",
+  "version": "0.0.0",
+  "authors": [
+    "Andrés García H <andresa.garciah621@gmail.com>"
+  ],
+  "description": "folder to test my polymer elements",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
