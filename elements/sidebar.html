@@ -23,7 +23,7 @@
             color: rgba(255, 123, 123, 0.86);
         }
         
-        #sidebar-main {
+        #sidebarmain {
             position: relative;
             height: 250px;
             background-color: #FF5252!important;
@@ -99,7 +99,7 @@
             background-color: rgba(5, 5, 5, 0.05);
         }
         
-        .portfolio-text {
+        .portfoliotext {
             padding-left: 30px;
         }
         /*material logos custom colors*/
@@ -125,12 +125,12 @@
         }
         /* end material logos custom colors*/
         
-        #sidebar-menu {
+        #sidebarmenu {
             background: rgba(255, 255, 255, 0.35);
         }
     </style>
     <template>
-        <div id="sidebar-main">
+        <div id="sidebarmain">
             <div id="myname">{{firstName}}<span> </span>
                 <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
             </div>
@@ -139,18 +139,18 @@
             </template>
             <paper-ripple id="pink-ripple"></paper-ripple>
         </div>
-        <div id="sidebar-menu">
+        <div id="sidebarmenu">
             <template is="dom-repeat" as="content" items="{{content}}">
                 <a class="portfolio-item" id="{{content.text}}" href="{{content.ref}}">
                     <i class$="{{getIcon(content.color)}}">{{content.icon}}</i>
-                    <span class="portfolio-text">{{content.text}}</span>
+                    <span class="portfoliotext">{{content.text}}</span>
                     <paper-ripple></paper-ripple>
                 </a>
             </template>
         </div>
     </template>
     <script>
-        Polymer({
+        MI = Polymer({
             is: "portfolio-sidebar",
             properties: {
                 firstName: {
@@ -207,8 +207,12 @@
             },
 
             /**Life Cycle CallBacks**/
-            ready: function () {
-                console.log(this.$.myname);
+            attached: function () {
+                this.async(function () {
+                    this.$.sidebarmenu
+                        .querySelector("#Profile")
+                        .className += " active";
+                });
             },
             /**End Life Cycle CallBacks**/
 
