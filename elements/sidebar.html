@@ -126,13 +126,12 @@
     </style>
     <template>
         <div id="sidebar-main">
-            <div id="my-name">{{firstName}}<strong>{{lastName}}<paper-ripple></paper-ripple></strong>
+            <div id="my-name">{{firstName}}<span> </span>
+                <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
             </div>
-            <templae is="dom-repeat" items="{{professions}}">
+            <template is="dom-repeat" items="{{professions}}">
                 <div class="profession">{{item}}</div>
-            </templae>
-            <div class="profession">Industrial Engineer</div>
-            <div class="profession">Web Developer</div>
+            </template>
             <paper-ripple id="pink-ripple"></paper-ripple>
         </div>
         <div id="sidebar-menu">
@@ -151,7 +150,7 @@
             properties: {
                 firstName: {
                     type: "String",
-                    value: "Andrés "
+                    value: "Andrés"
                 },
                 lastName: {
                     type: "String",
@@ -161,7 +160,7 @@
                     type: "Array",
                     value: [
                         "Web Developer",
-                        "Indsutril Engineer"
+                        "Indsutrial Engineer"
                     ]
                 },
                 content: {
