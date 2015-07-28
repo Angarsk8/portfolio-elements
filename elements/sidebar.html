@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
+<link rel="stylesheet" href="../styles/elements/sidebar.css">
 
 <dom-module id="portfolio-sidebar">
     <style>
@@ -16,117 +17,6 @@
             box-shadow: 6px 0 8px rgba(0, 0, 0, .1);
             background-color: #fff;
             z-index: 3;
-            /*background-image: url('http://joelcox.io/content/images/bg-2.jpg');*/
-        }
-        
-        #pink-ripple {
-            color: rgba(255, 123, 123, 0.86);
-        }
-        
-        #sidebarmain {
-            position: relative;
-            height: 250px;
-            background-color: #FF5252!important;
-            margin-bottom: 10px;
-        }
-        
-        #myname {
-            color: #FFF!important;
-            font-size: 36px;
-            text-align: right;
-            padding-top: 30%;
-            padding-bottom: 5px;
-            padding-right: 18px;
-            /**/
-            
-            padding-right: 8%;
-            font-weight: 100;
-        }
-        
-        .profession {
-            clear: both;
-            text-align: right;
-            padding-right: 18px;
-            /**/
-            
-            padding-right: 8%;
-            font-size: 13px;
-        }
-        
-        a {
-            position: relative;
-            display: block;
-            text-decoration: none;
-            color: #9e9e9e!important;
-            font-weight: 900;
-            padding: 12px 0 12px 30px;
-            cursor: pointer;
-            border-bottom: 1px solid #eee;
-            -webkit-transition: all 600ms ease;
-            transition: all 800ms ease;
-            box-sizing: border-box;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-            flex-direction: row;
-            width: 100%;
-        }
-        
-        a.active {
-            background-color: rgba(5, 5, 5, 0.05);
-        }
-        
-        a:link {
-            color: #9e9e9e;
-        }
-        
-        a:visited {
-            color: #9e9e9e;
-        }
-        
-        a:hover {
-            color: #9e9e9e;
-            background-color: rgba(5, 5, 5, 0.05);
-        }
-        
-        a:active {
-            color: #9e9e9e;
-            background-color: rgba(5, 5, 5, 0.05);
-        }
-        
-        .portfoliotext {
-            padding-left: 30px;
-        }
-        /*material logos custom colors*/
-        
-        .material-icons.custom-red {
-            color: #ff3030;
-        }
-        
-        .material-icons.custom-purple {
-            color: #673AB7;
-        }
-        
-        .material-icons.custom-green {
-            color: #26A65B;
-        }
-        
-        .material-icons.custom-blue {
-            color: #536dfe;
-        }
-        
-        .material-icons.custom-yellow {
-            color: #F7CA18;
-        }
-        /* end material logos custom colors*/
-        
-        #sidebarmenu {
-            background: rgba(255, 255, 255, 0.35);
         }
     </style>
     <template>
@@ -137,11 +27,11 @@
             <template is="dom-repeat" as="profession" items="{{professions}}">
                 <div class="profession">{{profession}}</div>
             </template>
-            <paper-ripple id="pink-ripple"></paper-ripple>
+            <paper-ripple id="pinkripple"></paper-ripple>
         </div>
         <div id="sidebarmenu">
-            <template is="dom-repeat" as="content" items="{{content}}">
-                <a class="portfolio-item" id="{{content.text}}" href="{{content.ref}}">
+            <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
+                <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}">
                     <i class$="{{getIcon(content.color)}}">{{content.icon}}</i>
                     <span class="portfoliotext">{{content.text}}</span>
                     <paper-ripple></paper-ripple>
@@ -185,19 +75,19 @@
                             },
                         {
                             text: "Projects",
-                            icon: "person",
+                            icon: "extension",
                             ref: "#",
                             color: "custom-green"
                             },
                         {
                             text: "Skills",
-                            icon: "person",
+                            icon: "stars",
                             ref: "#",
                             color: "custom-blue"
                             },
                         {
                             text: "Education",
-                            icon: "person",
+                            icon: "layers",
                             ref: "#",
                             color: "custom-yellow"
                             }
@@ -207,18 +97,28 @@
             },
 
             /**Life Cycle CallBacks**/
-            attached: function () {
+            ready: function () {
                 this.async(function () {
-                    this.$.sidebarmenu
-                        .querySelector("#Profile")
-                        .className += " active";
+                    this.$$("#Profile").className += " active";
                 });
             },
-            /**End Life Cycle CallBacks**/
 
             /**Custom Prototype Methods**/
             getIcon: function (color) {
                 return "material-icons md-24 " + color;
+            },
+            quitActive: function () {
+                Array.prototype.map.call(this.$.sidebarmenu.querySelectorAll("a"), function (element) {
+                    return element.className = element.className.replace("active", "");
+                });
+                return this;
+            },
+
+            /**Events Handlers**/
+            toggleState: function (e) {
+                this.quitActive()
+                    .$$("#" + this.$.contentList.itemForElement(e.target).text)
+                    .className += " active";
             }
         });
     </script>
