@@ -8,6 +8,7 @@
             position: fixed;
             top: 0;
             left: 0;
+            max-width: 300px;
             min-width: 250px;
             min-height: 100%;
             width: 18%;
@@ -17,7 +18,37 @@
             box-shadow: 6px 0 8px rgba(0, 0, 0, .1);
             background-color: #fff;
             z-index: 3;
+            /*-webkit-transition: all 900ms ease;
+            transition: all 900ms ease;*/
         }
+        /* mobile-large */
+        /*@media all and (min-width: 0px) and (max-width: 400px) and (orientation: portrait) {
+            #sidebarmain {
+                height: 0;
+                display: none;
+            }
+            #myname {
+                display: none;
+            }
+            .profession {
+                display: none;
+            }
+            .portfoliotext {
+                display: none;
+            }
+            :host {
+                min-width: 80px;
+                width: 10%;
+                -webkit-transition: all 900ms ease;
+                transition: all 900ms ease;
+            }
+        }*/
+        /* mobile-large-landscape */
+        /*@media all and (min-width: 481px) and (orientation: landscape) {}*/
+        /* tablet-small-landscape */
+        /*@media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) {}*/
+        /* tablet-large-landscape */
+        /*@media all and (min-width: 961px) and (orientation: landscape) {}*/
     </style>
     <template>
         <div id="sidebarmain">
