@@ -7,8 +7,8 @@
     height: 250px;
     background-color: #FF5252!important;
     margin-bottom: 10px;
-    /*-webkit-transition: all 900ms ease;
-    transition: all 900ms ease;*/
+    -webkit-transition: all 900ms ease;
+    transition: all 900ms ease;
 }
 
 #myname {
@@ -56,21 +56,14 @@ a.active {
     background-color: rgba(5, 5, 5, 0.05);
 }
 
-a:link {
-    color: #9e9e9e;
-}
-
-a:visited {
+a:link,
+a:visited,
+a:hover,
+a:active {
     color: #9e9e9e;
 }
 
 a:hover {
-    color: #9e9e9e;
-    background-color: rgba(5, 5, 5, 0.05);
-}
-
-a:active {
-    color: #9e9e9e;
     background-color: rgba(5, 5, 5, 0.05);
 }
 
@@ -101,5 +94,5 @@ a:active {
 /* end material logos custom colors*/
 
 #sidebarmenu {
-    background: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.22);
 }

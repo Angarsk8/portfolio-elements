@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="background-image">
+    <style>
+        /*:host,*/
+        
+        div {
+            background-position: center top;
+            -mox-box-flex: 1 0 auto;
+            -ms-flex: 1 0 auto;
+            -webkit-flex: 1 0 auto;
+            flex: 1 0 auto;
+            height: 100%;
+            width: 100%;
+            min-height: 100%;
+            min-width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+    </style>
+    <template>
+        <div style$="{{computeInlineStyles(source,blurness,composition)}}"></div>
+    </template>
+    <script>
+        Polymer({
+            is: "background-image",
+            properties: {
+                source: "String",
+                blurness: "Number",
+                composition: "String"
+            },
+            computeInlineStyles: function (source, blurness, composition) {
+                return "background-image: url(" + source + "); " +
+                    "filter: blur(" + blurness + "px); " +
+                    "-webkit-filter: blur(" + blurness + "px); " +
+                    "-ms-filter: blur(" + blurness + "px); " +
+                    "background-size: " + composition + ";";
+            }
+        });
+    </script>
+</dom-module>

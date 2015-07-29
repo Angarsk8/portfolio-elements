@@ -4,7 +4,7 @@
 
 <dom-module id="portfolio-sidebar">
     <style>
-        :host {
+        /*:host {
             position: fixed;
             top: 0;
             left: 0;
@@ -16,10 +16,55 @@
             font-family: 'Roboto Condensed', sans-serif;
             line-height: 1.5;
             box-shadow: 6px 0 8px rgba(0, 0, 0, .1);
-            background-color: #fff;
+            background-color: rgb(255, 255, 255);
             z-index: 3;
-            /*-webkit-transition: all 900ms ease;
-            transition: all 900ms ease;*/
+            -webkit-transition: all 900ms ease;
+            transition: all 900ms ease;
+        }*/
+        
+        :host {
+            box-shadow: 4px 0 6px rgba(0, 0, 0, .1);
+            -mox-box-flex: 1 0 auto;
+            -ms-flex: 1 0 auto;
+            -webkit-flex: 1 0 auto;
+            flex: 1 0 auto;
+            -ms-flex-direction: row;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            box-sizing: border-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            background-color: #fff;
+            min-height: 100%;
+            min-width: 50px;
+            max-width: 50px;
+            height: 100%;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        
+        .sidebarinner {
+            box-sizing: border-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -mox-box-flex: 1 0 auto;
+            -ms-flex: 1 0 auto;
+            -webkit-flex: 1 0 auto;
+            flex: 1 0 auto;
+            -ms-flex-direction: column;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            position: relative;
+            min-width: 100%;
+            min-height: 100%;
+            height: 100%;
         }
         /* mobile-large */
         /*@media all and (min-width: 0px) and (max-width: 400px) and (orientation: portrait) {
@@ -51,23 +96,25 @@
         /*@media all and (min-width: 961px) and (orientation: landscape) {}*/
     </style>
     <template>
-        <div id="sidebarmain">
-            <div id="myname">{{firstName}}<span> </span>
-                <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
+        <div class="sidebarinner">
+            <div id="sidebarmain">
+                <div id="myname">{{firstName}}<span> </span>
+                    <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
+                </div>
+                <template is="dom-repeat" as="profession" items="{{professions}}">
+                    <div class="profession">{{profession}}</div>
+                </template>
+                <paper-ripple id="pinkripple"></paper-ripple>
             </div>
-            <template is="dom-repeat" as="profession" items="{{professions}}">
-                <div class="profession">{{profession}}</div>
-            </template>
-            <paper-ripple id="pinkripple"></paper-ripple>
-        </div>
-        <div id="sidebarmenu">
-            <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
-                <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}">
-                    <i class$="{{getIcon(content.color)}}">{{content.icon}}</i>
-                    <span class="portfoliotext">{{content.text}}</span>
-                    <paper-ripple></paper-ripple>
-                </a>
-            </template>
+            <div id="sidebarmenu">
+                <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
+                    <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}">
+                        <i class$="{{getIcon(content.color)}}">{{content.icon}}</i>
+                        <span class="portfoliotext">{{content.text}}</span>
+                        <paper-ripple></paper-ripple>
+                    </a>
+                </template>
+            </div>
         </div>
     </template>
     <script>
@@ -136,7 +183,7 @@
 
             /**Custom Prototype Methods**/
             getIcon: function (color) {
-                return "material-icons md-24 " + color;
+                return "material-icons md-28 " + color;
             },
             quitActive: function () {
                 Array.prototype.map.call(this.$.sidebarmenu.querySelectorAll("a"), function (element) {

@@ -1,0 +1,32 @@
+{
+  "name": "github-fork",
+  "description": "Cool option to quickly add the \"Fork me on github\" ribbon to your projects.",
+  "homepage": "https://caferati.me/labs/github-fork",
+  "authors": [
+    "rcaferati (https://github.com/rcaferati/)"
+  ],
+  "license": "MIT",
+  "main": "github-fork.html",
+  "keywords": [
+    "web-components",
+    "github fork",
+    "forke me"
+  ],
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^0.7.0"
+  },
+  "_release": "332c44c79e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "332c44c79e32c04a0c6797a81bbe7cd9beed494b"
+  },
+  "_source": "git://github.com/rcaferati/github-fork.git",
+  "_target": "*",
+  "_originalSource": "github-fork",
+  "_direct": true
+}
