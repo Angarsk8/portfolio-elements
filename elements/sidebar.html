@@ -1,120 +1,53 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="stylesheet" href="../styles/elements/sidebar.css">
+<!--https://elements.polymer-project.org/elements/iron-icons?view=demo:demo/index.html-->
 
 <dom-module id="portfolio-sidebar">
     <style>
-        /*:host {
-            position: fixed;
-            top: 0;
-            left: 0;
-            max-width: 300px;
-            min-width: 250px;
-            min-height: 100%;
-            width: 18%;
-            height: 100%;
+        :host {
             font-family: 'Roboto Condensed', sans-serif;
             line-height: 1.5;
             box-shadow: 6px 0 8px rgba(0, 0, 0, .1);
             background-color: rgb(255, 255, 255);
             z-index: 3;
-            -webkit-transition: all 900ms ease;
-            transition: all 900ms ease;
-        }*/
-        
-        :host {
-            box-shadow: 4px 0 6px rgba(0, 0, 0, .1);
-            -mox-box-flex: 1 0 auto;
-            -ms-flex: 1 0 auto;
-            -webkit-flex: 1 0 auto;
-            flex: 1 0 auto;
-            -ms-flex-direction: row;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-flex-wrap: nowrap;
-            -ms-flex-wrap: nowrap;
-            flex-wrap: nowrap;
-            box-sizing: border-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            background-color: #fff;
+            max-width: 300px;
+            min-width: 250px;
             min-height: 100%;
-            min-width: 50px;
-            max-width: 50px;
+            width: 20%;
             height: 100%;
-            z-index: 3;
-            left: 0;
-            top: 0;
-            opacity: 0;
+            float: left;
         }
         
-        .sidebarinner {
-            box-sizing: border-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -mox-box-flex: 1 0 auto;
-            -ms-flex: 1 0 auto;
-            -webkit-flex: 1 0 auto;
-            flex: 1 0 auto;
-            -ms-flex-direction: column;
-            -webkit-flex-direction: column;
-            flex-direction: column;
-            position: relative;
-            min-width: 100%;
-            min-height: 100%;
-            height: 100%;
-        }
-        /* mobile-large */
-        /*@media all and (min-width: 0px) and (max-width: 400px) and (orientation: portrait) {
-            #sidebarmain {
-                height: 0;
-                display: none;
-            }
-            #myname {
-                display: none;
-            }
-            .profession {
-                display: none;
-            }
-            .portfoliotext {
-                display: none;
-            }
+        @media screen and (max-width: 768px) {
             :host {
                 min-width: 80px;
                 width: 10%;
-                -webkit-transition: all 900ms ease;
-                transition: all 900ms ease;
             }
-        }*/
-        /* mobile-large-landscape */
-        /*@media all and (min-width: 481px) and (orientation: landscape) {}*/
-        /* tablet-small-landscape */
-        /*@media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) {}*/
-        /* tablet-large-landscape */
-        /*@media all and (min-width: 961px) and (orientation: landscape) {}*/
+        }
     </style>
     <template>
-        <div class="sidebarinner">
-            <div id="sidebarmain">
-                <div id="myname">{{firstName}}<span> </span>
-                    <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
-                </div>
-                <template is="dom-repeat" as="profession" items="{{professions}}">
-                    <div class="profession">{{profession}}</div>
-                </template>
-                <paper-ripple id="pinkripple"></paper-ripple>
+        <div id="sidebarmain">
+            <div id="myname">{{firstName}}<span> </span>
+                <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
             </div>
-            <div id="sidebarmenu">
-                <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
-                    <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}">
-                        <i class$="{{getIcon(content.color)}}">{{content.icon}}</i>
-                        <span class="portfoliotext">{{content.text}}</span>
-                        <paper-ripple></paper-ripple>
-                    </a>
-                </template>
-            </div>
+            <template is="dom-repeat" as="profession" items="{{professions}}">
+                <div class="profession">{{profession}}</div>
+            </template>
+            <paper-ripple id="pinkripple"></paper-ripple>
+        </div>
+        <div id="sidebarmenu">
+            <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
+                <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}" on-mouseover="hoverHandler" on-mouseout="hoverHandler">
+                    <iron-icon icon$="{{getIconType(content.icon)}}" class$="{{setIconColor(content.color)}}"></iron-icon>
+                    <span class="portfoliotext">{{content.text}}</span>
+                    <paper-ripple id="pinkripple"></paper-ripple>
+                </a>
+            </template>
         </div>
     </template>
     <script>
@@ -141,31 +74,31 @@
                     value: [
                         {
                             text: "Profile",
-                            icon: "person",
+                            icon: "social:person",
                             ref: "#",
                             color: "custom-red",
                             },
                         {
                             text: "Experience",
-                            icon: "pages",
+                            icon: "av:av-timer" || "icons:work",
                             ref: "#",
                             color: "custom-purple"
                             },
                         {
                             text: "Projects",
-                            icon: "extension",
+                            icon: "av:web",
                             ref: "#",
                             color: "custom-green"
                             },
                         {
                             text: "Skills",
-                            icon: "stars",
+                            icon: "av:equalizer" || "editor:insert-chart",
                             ref: "#",
                             color: "custom-blue"
                             },
                         {
                             text: "Education",
-                            icon: "layers",
+                            icon: "social:school",
                             ref: "#",
                             color: "custom-yellow"
                             }
@@ -179,11 +112,15 @@
                 this.async(function () {
                     this.$$("#Profile").className += " active";
                 });
+                this.$$("")
             },
 
             /**Custom Prototype Methods**/
-            getIcon: function (color) {
-                return "material-icons md-28 " + color;
+            setIconColor: function (color) {
+                return color;
+            },
+            getIconType: function (icon) {
+                return icon;
             },
             quitActive: function () {
                 Array.prototype.map.call(this.$.sidebarmenu.querySelectorAll("a"), function (element) {
@@ -197,6 +134,18 @@
                 this.quitActive()
                     .$$("#" + this.$.contentList.itemForElement(e.target).text)
                     .className += " active";
+            },
+            hoverHandler: function (e) {
+                var hoveredLink = e.srcElement.parentElement;
+                var textSpan = hoveredLink.querySelector(".portfoliotext");
+                var icon = hoveredLink.querySelector("iron-icon");
+                if (e.type == "mouseover") {
+                    textSpan.classList.add("hovered");
+                    icon.classList.add("hovered");
+                } else if (e.type == "mouseout") {
+                    textSpan.classList.remove("hovered");
+                    icon.classList.remove("hovered");
+                }
             }
         });
     </script>

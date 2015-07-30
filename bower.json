@@ -1,23 +1,24 @@
 {
-  "name": "portfolio-elements",
-  "version": "0.0.0",
-  "authors": [
+    "name": "portfolio-elements",
+    "version": "0.0.0",
+    "authors": [
     "Andrés García H <andresa.garciah621@gmail.com>"
   ],
-  "description": "folder to test my polymer elements",
-  "moduleType": [
+    "description": "folder to test my polymer elements",
+    "moduleType": [
     "node"
   ],
-  "license": "MIT",
-  "ignore": [
+    "license": "MIT",
+    "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
   ],
-  "dependencies": {
-    "github-fork": "*",
-    "polymer-fork-me-on-github": "*"
-  }
+    "dependencies": {
+        "iron-pages": "polymerelements/iron-pages#~1.0.3",
+        "iron-icons": "polymerelements/iron-icons#~1.0.3",
+        "polymer": "~1.0.8"
+    }
 }

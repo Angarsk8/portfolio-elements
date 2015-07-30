@@ -30,7 +30,6 @@
 
 a {
     position: relative;
-    display: block;
     text-decoration: none;
     color: #9e9e9e!important;
     font-weight: 900;
@@ -54,6 +53,7 @@ a {
 
 a.active {
     background-color: rgba(5, 5, 5, 0.05);
+    /*background-color: rgba(255, 147, 147, 0.48)!important;*/
 }
 
 a:link,
@@ -64,35 +64,67 @@ a:active {
 }
 
 a:hover {
-    background-color: rgba(5, 5, 5, 0.05);
+    /*background-color: rgba(5, 5, 5, 0.05);*/
+    
+    background-color: rgba(255, 147, 147, 0.48)!important;
 }
 
 .portfoliotext {
     padding-left: 30px;
 }
-/*material logos custom colors*/
 
-.material-icons.custom-red {
+.portfoliotext.hovered {
+    color: #fff;
+}
+/*material icons custom colors*/
+
+iron-icon.custom-red {
     color: #ff3030;
 }
 
-.material-icons.custom-purple {
+iron-icon.custom-purple {
     color: #673AB7;
 }
 
-.material-icons.custom-green {
+iron-icon.custom-green {
     color: #26A65B;
 }
 
-.material-icons.custom-blue {
+iron-icon.custom-blue {
     color: #536dfe;
 }
 
-.material-icons.custom-yellow {
+iron-icon.custom-yellow {
     color: #F7CA18;
 }
-/* end material logos custom colors*/
+/* end material icons custom colors*/
+
+iron-icon.iron-icon-0 {
+    height: 26px;
+    width: 26px;
+}
+
+iron-icon.iron-icon-0.hovered {
+    height: 26px;
+    width: 26px;
+    color: #fff;
+}
 
 #sidebarmenu {
     background-color: rgba(255, 255, 255, 0.22);
+}
+
+@media screen and (max-width: 768px) {
+    #sidebarmain {
+        display: none;
+    }
+    #myname {
+        display: none;
+    }
+    .profession {
+        display: none;
+    }
+    .portfoliotext {
+        display: none;
+    }
 }

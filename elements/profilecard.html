@@ -1,0 +1,95 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="profile-card">
+    <style>
+        article,
+        section {
+            display: block;
+        }
+        
+        article#paper {
+            width: 90%;
+            max-width: 60pc;
+            margin: 2.5em auto;
+            box-shadow: 0 0 6px 2px rgba(0, 0, 0, .25);
+        }
+        
+        #profilephoto {
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+            line-height: 0;
+            width: 20pc;
+        }
+        
+        #profilephoto img {
+            width: 100%;
+            border: 0;
+            line-height: 0;
+        }
+        
+        #details {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - 20pc);
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+        
+        #details section {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1 1 auto;
+            flex: 1 1 auto;
+        }
+        
+        #paper h2 {
+            margin: 0;
+            background-color: #f5f7fa;
+            padding: 1em;
+            display: block;
+            font-size: 1.5em;
+            -webkit-margin-before: 0.83em;
+            -webkit-margin-after: 0.83em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            font-weight: bold;
+        }
+        
+        #details section>section {
+            padding: 1em;
+        }
+        
+        p {
+            font-size: 1em;
+            display: block;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
+    </style>
+    <template>
+        <article id="paper">
+            <!--<div id="profilephoto">
+                <img src="../assets/profile/profile1.jpg" alt="my-profile-photo">
+            </div>-->
+            <div id="details">
+                <section id="description">
+                    <h2>About Me</h2>
+                    <section>
+                        <p>I'm a developer based in Bristol, UK, specialising in building web apps, consider myself full-stack developer but I tend to work more on the front-end. I also enjoy making games and tweaking with 3D graphics (mostly Blender). I like coffee, cars and Linux. I enjoy building stuff, investigating new technologies and general hacking. I tend to follow start-ups scene and indie game developers. If there's a hackathon in the UK you may see me there.</p>
+                        <p>And this section needs more work :)</p>
+                    </section>
+                </section>
+            </div>
+        </article>
+    </template>
+    <script>
+        Polymer({
+            is: "profile-card"
+        });
+    </script>
+</dom-module>
