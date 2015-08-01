@@ -19,6 +19,7 @@
     "dependencies": {
         "iron-pages": "polymerelements/iron-pages#~1.0.3",
         "iron-icons": "polymerelements/iron-icons#~1.0.3",
-        "polymer": "~1.0.8"
+        "polymer": "~1.0.8",
+        "jquery": "~2.1.4"
     }
 }

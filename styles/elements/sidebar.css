@@ -9,11 +9,15 @@
     margin-bottom: 10px;
     -webkit-transition: all 900ms ease;
     transition: all 900ms ease;
+    -webkit-animation-delay: 1.8s;
+    animation-delay: 1.8s;
 }
 
 #myname {
     color: #FFF!important;
-    font-size: 36px;
+    /*    font-size: 36px;*/
+    
+    font-size: 33px;
     text-align: right;
     padding-top: 30%;
     padding-bottom: 5px;
@@ -28,16 +32,23 @@
     font-size: 13px;
 }
 
+#sidebarmenu {
+    background-color: rgba(255, 255, 255, 0.22);
+    -webkit-animation-delay: 1.8s;
+    animation-delay: 1.8s;
+}
+
 a {
     position: relative;
     text-decoration: none;
     color: #9e9e9e!important;
-    font-weight: 900;
+    font-weight: 800;
+    font-size: 16px;
     padding: 12px 0 12px 30px;
     cursor: pointer;
-    border-bottom: 1px solid #eee;
-    -webkit-transition: all 700ms ease;
-    transition: all 700ms ease;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    -webkit-transition: all 1000ms ease;
+    transition: all 1000ms ease;
     box-sizing: border-box;
     display: -webkit-box;
     display: -webkit-flex;
@@ -49,6 +60,7 @@ a {
     -ms-flex-direction: row;
     flex-direction: row;
     width: 100%;
+    height: 50px;
 }
 
 a.active {
@@ -71,6 +83,10 @@ a:hover {
 
 .portfoliotext {
     padding-left: 30px;
+    -webkit-animation-delay: 3.7s;
+    animation-delay: 3.7s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
 }
 
 .portfoliotext.hovered {
@@ -102,6 +118,8 @@ iron-icon.custom-yellow {
 iron-icon.iron-icon-0 {
     height: 26px;
     width: 26px;
+    -webkit-animation-delay: 2.8s;
+    animation-delay: 2.8s;
 }
 
 iron-icon.iron-icon-0.hovered {
@@ -110,13 +128,14 @@ iron-icon.iron-icon-0.hovered {
     color: #fff;
 }
 
-#sidebarmenu {
-    background-color: rgba(255, 255, 255, 0.22);
-}
-
 @media screen and (max-width: 768px) {
     #sidebarmain {
-        display: none;
+        height: 0;
+        margin: 0;
+        /*
+        -webkit-transition: all 900ms ease;
+       transition: all 900ms ease;
+*/
     }
     #myname {
         display: none;
@@ -126,5 +145,17 @@ iron-icon.iron-icon-0.hovered {
     }
     .portfoliotext {
         display: none;
+    }
+    a {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        height: 70px;
+        border-bottom: 1px solid rgb(238, 238, 238);
     }
 }

@@ -8,6 +8,7 @@
 <!--https://elements.polymer-project.org/elements/iron-icons?view=demo:demo/index.html-->
 
 <dom-module id="portfolio-sidebar">
+    <link rel="stylesheet" href="../styles/lib/animate.css">
     <style>
         :host {
             font-family: 'Roboto Condensed', sans-serif;
@@ -21,6 +22,8 @@
             width: 20%;
             height: 100%;
             float: left;
+            -webkit-animation-delay: 0.9s;
+            animation-delay: 0.9s;
         }
         
         @media screen and (max-width: 768px) {
@@ -31,20 +34,23 @@
         }
     </style>
     <template>
-        <div id="sidebarmain">
-            <div id="myname">{{firstName}}<span> </span>
-                <strong>{{lastName}}<paper-ripple></paper-ripple></strong>
+        <div id="sidebarmain" class="animated slideInLeft">
+            <div id="myname">
+                <!--{{firstName}}--><span> </span>
+                <strong><!--{{lastName}}--><paper-ripple></paper-ripple></strong>
             </div>
             <template is="dom-repeat" as="profession" items="{{professions}}">
-                <div class="profession">{{profession}}</div>
+                <div class="profession">
+                    <!--{{profession}}-->
+                </div>
             </template>
             <paper-ripple id="pinkripple"></paper-ripple>
         </div>
-        <div id="sidebarmenu">
+        <div id="sidebarmenu" class="animated slideInLeft">
             <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
                 <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}" on-mouseover="hoverHandler" on-mouseout="hoverHandler">
                     <iron-icon icon$="{{getIconType(content.icon)}}" class$="{{setIconColor(content.color)}}"></iron-icon>
-                    <span class="portfoliotext">{{content.text}}</span>
+                    <span class$="{{computePortfolioText()}}">{{content.text}}</span>
                     <paper-ripple id="pinkripple"></paper-ripple>
                 </a>
             </template>
@@ -111,12 +117,17 @@
             ready: function () {
                 this.async(function () {
                     this.$$("#Profile").className += " active";
-                });
+                    Array.prototype.forEach.call(
+                        this.$.sidebarmenu.querySelectorAll(".portfoliotext"),
+                        function (element) {
+                            element.classList.remove("animated");
+                        });
+                }, 5000)
             },
 
             /**Custom Prototype Methods**/
             setIconColor: function (color) {
-                return color;
+                return "animated rotateIn " + color;
             },
             getIconType: function (icon) {
                 return icon;
@@ -126,6 +137,9 @@
                     return element.className = element.className.replace("active", "");
                 });
                 return this;
+            },
+            computePortfolioText: function () {
+                return "animated fadeInLeft portfoliotext";
             },
 
             /**Events Handlers**/

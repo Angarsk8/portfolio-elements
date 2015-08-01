@@ -13,16 +13,17 @@
     <link rel="import" href="elements/sidebar.html">
     <link rel="import" href="elements/profilecard.html">
     <link rel="stylesheet" href="styles/global/main.css">
+    <link rel="stylesheet" href="styles/lib/animate.css">
 </head>
 
 <body unresolved class="fullbleed layout vertical">
     <background-image source="assets/background/white-geometric.png" blurness="15" composition="cover"></background-image>
     <div id='content'>
-        <portfolio-sidebar></portfolio-sidebar>
-        <div id='right'>Testing</div>
+        <portfolio-sidebar class="animated slideInDown"></portfolio-sidebar>
+        <div id='right'></div>
     </div>
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/3.0.0-alpha1/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/main/main.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/global/main.js"></script>
 </body>
 
 </html>
