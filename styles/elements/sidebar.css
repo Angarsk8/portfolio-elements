@@ -9,8 +9,10 @@
     margin-bottom: 10px;
     -webkit-transition: all 900ms ease;
     transition: all 900ms ease;
-    -webkit-animation-delay: 1.8s;
-    animation-delay: 1.8s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
 }
 
 #myname {
@@ -34,8 +36,10 @@
 
 #sidebarmenu {
     background-color: rgba(255, 255, 255, 0.22);
-    -webkit-animation-delay: 1.8s;
-    animation-delay: 1.8s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
 }
 
 a {
@@ -48,7 +52,7 @@ a {
     cursor: pointer;
     border-bottom: 1px solid rgb(238, 238, 238);
     -webkit-transition: all 1000ms ease;
-    transition: all 1000ms ease;
+    transition: all 1500ms ease;
     box-sizing: border-box;
     display: -webkit-box;
     display: -webkit-flex;
@@ -83,10 +87,10 @@ a:hover {
 
 .portfoliotext {
     padding-left: 30px;
-    -webkit-animation-delay: 3.7s;
-    animation-delay: 3.7s;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
+    -webkit-animation-delay: 5.3s;
+    animation-delay: 5.3s;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
 }
 
 .portfoliotext.hovered {
@@ -118,8 +122,8 @@ iron-icon.custom-yellow {
 iron-icon.iron-icon-0 {
     height: 26px;
     width: 26px;
-    -webkit-animation-delay: 2.8s;
-    animation-delay: 2.8s;
+    -webkit-animation-delay: 4.3s;
+    animation-delay: 4.3s;
 }
 
 iron-icon.iron-icon-0.hovered {

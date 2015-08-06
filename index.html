@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio Elements</title>
-    <script type="text/javascript" src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-
     <link rel="import" href="elements/background.html">
     <link rel="import" href="elements/sidebar.html">
     <link rel="import" href="elements/profilecard.html">
@@ -17,7 +15,7 @@
 </head>
 
 <body unresolved class="fullbleed layout vertical">
-    <background-image source="assets/background/white-geometric.png" blurness="15" composition="cover"></background-image>
+    <background-image source="assets/background/white-geometric.png" blurness="12" composition="cover" class="animated fadeIn"></background-image>
     <div id='content'>
         <portfolio-sidebar class="animated slideInDown"></portfolio-sidebar>
         <div id='right'></div>
