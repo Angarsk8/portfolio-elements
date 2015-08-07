@@ -5,7 +5,6 @@
 <link rel="import" href="../bower_components/iron-icons/av-icons.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="stylesheet" href="../styles/elements/sidebar.css">
-<!--https://elements.polymer-project.org/elements/iron-icons?view=demo:demo/index.html-->
 
 <dom-module id="portfolio-sidebar">
     <link rel="stylesheet" href="../styles/lib/animate.css">
@@ -113,14 +112,18 @@
 
             /**Life Cycle CallBacks**/
             ready: function () {
+                var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                var timer = windowWidth < 768 ? 6000 : 7700;
                 this.async(function () {
-                    this.$$("#Profile").className += " active";
+                    this.$.sidebarmenu.querySelector("#Profile").classList.add("active");
+                    this.$.sidebarmenu.querySelector("#Profile iron-icon").classList.add("active");
                     Array.prototype.forEach.call(
                         this.$.sidebarmenu.querySelectorAll(".portfoliotext"),
                         function (element) {
                             element.classList.remove("animated");
+                            element.classList.remove("fadeInLeft");
                         });
-                }, 7100)
+                }, timer);
             },
 
             /**Custom Prototype Methods**/
@@ -131,8 +134,9 @@
                 return icon;
             },
             quitActive: function () {
-                Array.prototype.map.call(this.$.sidebarmenu.querySelectorAll("a"), function (element) {
-                    return element.className = element.className.replace("active", "");
+                Array.prototype.forEach.call(this.$.sidebarmenu.querySelectorAll("a"), function (element) {
+                    element.classList.remove("active");
+                    element.querySelector("iron-icon.iron-icon-0").classList.remove("active");
                 });
                 return this;
             },
@@ -142,9 +146,11 @@
 
             /**Events Handlers**/
             toggleState: function (e) {
-                this.quitActive()
-                    .$$("#" + this.$.contentList.itemForElement(e.target).text)
-                    .className += " active";
+                this.quitActive();
+                var menuItem = e.srcElement.parentElement;
+                var icon = menuItem.querySelector("iron-icon.iron-icon-0");
+                menuItem.classList.add("active");
+                icon.classList.add("active");
             },
             hoverHandler: function (e) {
                 var hoveredLink = e.srcElement.parentElement;
