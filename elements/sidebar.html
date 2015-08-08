@@ -25,7 +25,7 @@
         
         @media screen and (max-width: 768px) {
             :host {
-                min-width: 80px;
+                min-width: 65px;
                 width: 10%;
             }
         }
@@ -112,8 +112,7 @@
 
             /**Life Cycle CallBacks**/
             ready: function () {
-                var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-                var timer = windowWidth < 768 ? 6000 : 7700;
+                var timer = this.windowWidth() < 768 ? 6000 : 7700;
                 this.async(function () {
                     this.$.sidebarmenu.querySelector("#Profile").classList.add("active");
                     this.$.sidebarmenu.querySelector("#Profile iron-icon").classList.add("active");
@@ -143,6 +142,9 @@
             computePortfolioText: function () {
                 return "animated fadeInLeft portfoliotext";
             },
+            windowWidth: function () {
+                return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            },
 
             /**Events Handlers**/
             toggleState: function (e) {
@@ -154,14 +156,22 @@
             },
             hoverHandler: function (e) {
                 var hoveredLink = e.srcElement.parentElement;
-                var textSpan = hoveredLink.querySelector(".portfoliotext");
-                var icon = hoveredLink.querySelector("iron-icon");
-                if (e.type == "mouseover") {
-                    textSpan.classList.add("hovered");
-                    icon.classList.add("hovered");
-                } else if (e.type == "mouseout") {
-                    textSpan.classList.remove("hovered");
-                    icon.classList.remove("hovered");
+                if (hoveredLink.nodeName === "A") {
+                    var textSpan = hoveredLink.querySelector(".portfoliotext");
+                    var icon = hoveredLink.querySelector("iron-icon");
+                    var activeIndex = Array.prototype.indexOf.call(hoveredLink.classList, "active");
+                    if (e.type == "mouseover") {
+                        if ((this.windowWidth() < 768 && activeIndex > 0) || this.windowWidth() < 768) {
+                            icon.classList.remove("active");
+                        } else {
+                            textSpan.classList.add("hovered");
+                            icon.classList.add("hovered");
+                        }
+                    } else if (e.type == "mouseout") {
+                        if (this.windowWidth() < 768 && activeIndex > 0) icon.classList.add("active");
+                        textSpan.classList.remove("hovered");
+                        icon.classList.remove("hovered");
+                    }
                 }
             }
         });

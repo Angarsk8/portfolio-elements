@@ -1,1 +1,7 @@
-$(document).ready(function () {});
+/*
+global $, document
+*/
+
+$(document).ready(function () {
+
+});
