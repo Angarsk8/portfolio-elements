@@ -142,13 +142,13 @@
             /**Events Handlers**/
             toggleState: function (e) {
                 this.quitActive();
-                var menuItem = e.srcElement.parentElement;
+                var menuItem = e.target.parentElement;
                 var icon = menuItem.querySelector("iron-icon.iron-icon-0");
                 menuItem.classList.add("active");
                 icon.classList.add("active");
             },
             hoverHandler: function (e) {
-                var hoveredLink = e.srcElement.parentElement;
+                var hoveredLink = e.target.parentElement;
                 if (hoveredLink.nodeName === "A") {
                     var textSpan = hoveredLink.querySelector(".portfoliotext");
                     var icon = hoveredLink.querySelector("iron-icon");
