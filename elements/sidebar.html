@@ -16,6 +16,11 @@
             float: left;
         }
         
+        :host.animated {
+            -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+        }
+
         @media screen and (max-width: 768px) {
             :host {
                 min-width: 65px;
@@ -24,7 +29,6 @@
         }
     </style>
     <template>
-        <!--        <div id="sidebarmain" class="animated slideInLeft">-->
         <div id="sidebarmain">
             <div id="myname">
                 <!--{{firstName}}--><span> </span>
@@ -37,12 +41,11 @@
             </template>
             <paper-ripple id="pinkripple"></paper-ripple>
         </div>
-        <!--        <div id="sidebarmenu" class="animated slideInLeft">-->
         <div id="sidebarmenu">
             <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
                 <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}" on-mouseover="hoverHandler" on-mouseout="hoverHandler">
                     <iron-icon icon$="{{getIconType(content.icon)}}" class$="{{setIconColor(content.color)}}"></iron-icon>
-                    <span class$="{{computePortfolioText()}}">{{content.text}}</span>
+                    <span class="portfoliotext">{{content.text}}</span>
                     <paper-ripple id="pinkripple"></paper-ripple>
                 </a>
             </template>
@@ -172,13 +175,12 @@
                                 }
                             }, 1500);
                         }, 2000);
-                    }, 1000);
+                    }, 2000);
                 });
             },
 
             /**Custom Prototype Methods**/
             setIconColor: function (color) {
-                //                return "animated rotateIn " + color;
                 return color;
             },
             getIconType: function (icon) {
@@ -190,10 +192,6 @@
                     element.querySelector("iron-icon.iron-icon-0").classList.remove("active");
                 });
                 return this;
-            },
-            computePortfolioText: function () {
-                //                return "animated fadeInLeft portfoliotext";
-                return "portfoliotext";
             },
             windowWidth: function () {
                 return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
