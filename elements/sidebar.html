@@ -24,7 +24,8 @@
         }
     </style>
     <template>
-        <div id="sidebarmain" class="animated slideInLeft">
+        <!--        <div id="sidebarmain" class="animated slideInLeft">-->
+        <div id="sidebarmain">
             <div id="myname">
                 <!--{{firstName}}--><span> </span>
                 <strong><!--{{lastName}}--><paper-ripple></paper-ripple></strong>
@@ -36,7 +37,8 @@
             </template>
             <paper-ripple id="pinkripple"></paper-ripple>
         </div>
-        <div id="sidebarmenu" class="animated slideInLeft">
+        <!--        <div id="sidebarmenu" class="animated slideInLeft">-->
+        <div id="sidebarmenu">
             <template is="dom-repeat" id="contentList" as="content" items="{{content}}">
                 <a id="{{content.text}}" on-click="toggleState" href="{{content.ref}}" on-mouseover="hoverHandler" on-mouseout="hoverHandler">
                     <iron-icon icon$="{{getIconType(content.icon)}}" class$="{{setIconColor(content.color)}}"></iron-icon>
@@ -105,22 +107,79 @@
 
             /**Life Cycle CallBacks**/
             ready: function () {
-                var timer = this.windowWidth() < 768 ? 6000 : 7700;
                 this.async(function () {
-                    this.$.sidebarmenu.querySelector("#Profile").classList.add("active");
-                    this.$.sidebarmenu.querySelector("#Profile iron-icon").classList.add("active");
-                    Array.prototype.forEach.call(
-                        this.$.sidebarmenu.querySelectorAll(".portfoliotext"),
-                        function (element) {
-                            element.classList.remove("animated");
-                            element.classList.remove("fadeInLeft");
-                        });
-                }, timer);
+                    var obj = this;
+                    var sidebarMain = obj.$.sidebarmain;
+                    var sidebarMenu = obj.$.sidebarmenu;
+                    var firstLink = sidebarMenu.firstElementChild;
+                    var icons = sidebarMenu.querySelectorAll("iron-icon");
+                    var spans = sidebarMenu.querySelectorAll("span");
+                    var isSmall = this.windowWidth() < 768 ? true : false;
+
+                    /*Set display to none for the below elements*/
+                    obj.style.display = "none";
+                    sidebarMain.style.display = "none";
+                    sidebarMenu.style.display = "none";
+                    Array.prototype.forEach.call(icons, function (icon, i) {
+                        icon.style.display = "none";
+                        spans[i].style.display = "none";
+                    });
+
+                    /*Add the animation classes to the below elements and reset their display property*/
+                    setTimeout(function () {
+                        obj.style.display = "";
+                        obj.classList.add("animated");
+                        obj.classList.add("slideInDown");
+                        setTimeout(function () {
+                            sidebarMain.style.display = "";
+                            sidebarMain.classList.add("animated");
+                            sidebarMain.classList.add("slideInLeft");
+                            sidebarMenu.style.display = "";
+                            sidebarMenu.classList.add("animated");
+                            sidebarMenu.classList.add("slideInLeft");
+                            setTimeout(function () {
+                                Array.prototype.forEach.call(icons, function (icon) {
+                                    icon.style.display = "";
+                                    icon.classList.add("animated");
+                                    icon.classList.add("rotateIn");
+                                });
+                                if (!isSmall) {
+                                    setTimeout(function () {
+                                        Array.prototype.forEach.call(spans, function (span) {
+                                            span.style.display = "";
+                                            span.classList.add("animated");
+                                            span.classList.add("fadeInLeft");
+                                        });
+                                        setTimeout(function () {
+                                            Array.prototype.forEach.call(spans, function (span) {
+                                                span.classList.remove("animated");
+                                                span.classList.remove("fadeInLeft");
+                                            });
+                                            firstLink.classList.add("active");
+                                            firstLink.querySelector("iron-icon").classList.add("active");
+                                        }, 1500);
+                                    }, 1500);
+                                } else {
+                                    setTimeout(function () {
+                                        Array.prototype.forEach.call(spans, function (span) {
+                                            span.style.display = "";
+                                            span.classList.remove("animated");
+                                            span.classList.remove("fadeInLeft");
+                                        });
+                                        firstLink.classList.add("active");
+                                        firstLink.querySelector("iron-icon").classList.add("active");
+                                    }, 1500);
+                                }
+                            }, 1500);
+                        }, 2000);
+                    }, 1000);
+                });
             },
 
             /**Custom Prototype Methods**/
             setIconColor: function (color) {
-                return "animated rotateIn " + color;
+                //                return "animated rotateIn " + color;
+                return color;
             },
             getIconType: function (icon) {
                 return icon;
@@ -133,7 +192,8 @@
                 return this;
             },
             computePortfolioText: function () {
-                return "animated fadeInLeft portfoliotext";
+                //                return "animated fadeInLeft portfoliotext";
+                return "portfoliotext";
             },
             windowWidth: function () {
                 return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;

@@ -8,16 +8,12 @@
     margin-bottom: 10px;
     -webkit-transition: all 900ms ease;
     transition: all 900ms ease;
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s;
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
 }
 
 #myname {
     color: #FFF!important;
-    /*    font-size: 36px;*/
-    
     font-size: 33px;
     text-align: right;
     padding-top: 30%;
@@ -35,8 +31,6 @@
 
 #sidebarmenu {
     background-color: rgba(255, 255, 255, 0.22);
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s;
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
 }
@@ -68,7 +62,6 @@ a {
 
 a.active {
     background: rgba(5, 5, 5, 0.08);
-    /*background-color: rgba(255, 147, 147, 0.48)!important;*/
 }
 
 a:link,
@@ -79,8 +72,6 @@ a:active {
 }
 
 a:hover {
-    /*background-color: rgba(5, 5, 5, 0.05);*/
-    
     background: rgba(255, 147, 147, 0.48);
     background: -webkit-linear-gradient(90deg, rgba(239, 49, 45, 0.5) 10%, rgba(255, 110, 108, 0.3) 90%);
     background: -webkit-linear-gradient(0deg, rgba(239, 49, 45, 0.5) 10%, rgba(255, 110, 108, 0.3) 90%);
@@ -89,8 +80,6 @@ a:hover {
 
 .portfoliotext {
     padding-left: 30px;
-    -webkit-animation-delay: 5.8s;
-    animation-delay: 5.8s;
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
 }
@@ -124,8 +113,6 @@ iron-icon.custom-yellow {
 iron-icon.iron-icon-0 {
     height: 26px;
     width: 26px;
-    -webkit-animation-delay: 4.3s;
-    animation-delay: 4.3s;
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
 }
